@@ -1,0 +1,33 @@
+{
+  "name": "tydids",
+  "version": "1.0.0",
+  "description": "TyDIDs - Identity an Certificate framework",
+  "main": "lib.js",
+  "scripts": {
+    "test": "mocha -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/energychain/tydids.git"
+  },
+  "keywords": [
+    "tydids",
+    "stromdao",
+    "corrently",
+    "did",
+    "framework",
+    "certificate"
+  ],
+  "author": "STROMDAO GmbH <dev@stromdao.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/energychain/tydids/issues"
+  },
+  "homepage": "https://github.com/energychain/tydids#readme",
+  "dependencies": {
+    "ethers": "^5.7.2"
+  },
+  "devDependencies": {
+    "mocha": "^10.1.0"
+  }
+}
