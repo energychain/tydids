@@ -444,6 +444,8 @@ exports.wallet = function(privateKey , provider) {
             }
         ]
     }
+    
+    wallet.tydids.NFT.instance = new ethers.Contract(wallet.tydids.NFT.address, wallet.tydids.NFT.ABI, wallet);
 
     return wallet;
 }
