@@ -40,7 +40,7 @@ exports.wallet = function(privateKey , provider) {
     }
 
     wallet.tydids.NFT = {
-        address:'0x778BEDBf206C2f402c513F5612019FF63d05A25E',
+        address:'0x984733860c7EdEb2c8072BF897A6633a8B53F43A',
         ABI: [
             {
                 "inputs": [],
