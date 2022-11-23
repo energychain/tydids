@@ -442,7 +442,8 @@ exports.wallet = function(privateKey , provider) {
                 "stateMutability": "view",
                 "type": "function"
             }
-        ];
+        ]
     }
+
     return wallet;
 }
