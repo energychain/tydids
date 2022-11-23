@@ -3,12 +3,17 @@ const { ethers } = require("ethers");
 exports.wallet = function(privateKey , provider) {
     const isObject = function(payload) { if(Object.prototype.toString.call(payload).indexOf('Object') !== -1) return true; else return false; }
 
+    if((typeof provider == 'undefined')||(provider == null)) {
+        provider = new ethers.providers.JsonRpcProvider("https://rpc.tydids.com/");
+    }
+    
     let wallet = null;
     if((typeof privateKey == 'undefined') || (privateKey == null)) {
         wallet = ethers.Wallet.createRandom();
-    } else {
-        wallet =  new ethers.Wallet( privateKey , provider );
-    }
+        privateKey = wallet.privateKey;
+    } 
+    wallet =  new ethers.Wallet( privateKey , provider );
+    
     
     // Overwrite and Extend standard ethers JS implementation;
     wallet.tydids = {};
@@ -444,7 +449,7 @@ exports.wallet = function(privateKey , provider) {
             }
         ]
     }
-    
+
     wallet.tydids.NFT.instance = new ethers.Contract(wallet.tydids.NFT.address, wallet.tydids.NFT.ABI, wallet);
 
     return wallet;

@@ -7,7 +7,8 @@ const app = async function() {
     let signature = await wallet.tydids.signMessage(hash);
     console.log('Signature',signature);
     console.log('Owner',wallet.address);
-    console.log('Hash',hash)
+    console.log('Hash',hash);
+    console.log(wallet.tydids.NFT.instance.owner());
 }
 
 app();
