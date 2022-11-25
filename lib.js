@@ -2,19 +2,26 @@ const { ethers } = require("ethers");
 
 exports.wallet = function(privateKey , provider) {
     const isObject = function(payload) { if(Object.prototype.toString.call(payload).indexOf('Object') !== -1) return true; else return false; }
-
-    if((typeof provider == 'undefined')||(provider == null)) {
-        provider = new ethers.providers.JsonRpcProvider("https://rpc.tydids.com/");
-    }
     
     let wallet = null;
-    if((typeof privateKey == 'undefined') || (privateKey == null)) {
-        wallet = ethers.Wallet.createRandom();
-        privateKey = wallet.privateKey;
-    } 
-    wallet =  new ethers.Wallet( privateKey , provider );
+
+    if(isObject(privateKey)) {
+        wallet = privateKey;
+    } else {
+
+        if((typeof provider == 'undefined')||(provider == null)) {
+            provider = new ethers.providers.JsonRpcProvider("https://rpc.tydids.com/");
+        }
+        
+        
+        if((typeof privateKey == 'undefined') || (privateKey == null)) {
+            wallet = ethers.Wallet.createRandom();
+            privateKey = wallet.privateKey;
+        } 
+        wallet =  new ethers.Wallet( privateKey , provider );
     
-    
+    }
+
     // Overwrite and Extend standard ethers JS implementation;
     wallet.tydids = {};
 
@@ -40,7 +47,7 @@ exports.wallet = function(privateKey , provider) {
     }
 
     wallet.tydids.NFT = {
-        address:'0x984733860c7EdEb2c8072BF897A6633a8B53F43A',
+        address:'0x778BEDBf206C2f402c513F5612019FF63d05A25E',
         ABI: [
             {
                 "inputs": [],
