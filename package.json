@@ -1,6 +1,6 @@
 {
   "name": "tydids",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "TyDIDs - Identity an Certificate framework",
   "main": "lib.js",
   "scripts": {
