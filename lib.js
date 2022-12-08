@@ -34,10 +34,15 @@ exports.wallet = function(privateKey , provider) {
 
     wallet.tydids.verifyMessage = function(payload,signature) {
         if(isObject(payload)) {
+            if((typeof signature == 'undefined')||(signature == null)) {
+                signature = ""+payload.signature;
+                delete payload.signature;
+            }
             payload = JSON.stringify(payload);
         }
         return ethers.utils.verifyMessage(payload,signature);
     } 
+    wallet.tydids.issuer = wallet.tydids.verifyMessage;
 
     wallet.tydids.hashMessage = function(payload) {
         if(isObject(payload)) {
