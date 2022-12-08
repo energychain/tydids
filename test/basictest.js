@@ -1,9 +1,10 @@
-var assert = require('assert');
-const lib = require("../lib");
+import { strict as assert } from 'node:assert';
+import tydids from "../lib.mjs";
+
 
 describe('Single Instance sign and verify', function () {
     it('Signing and verifying with one random wallet', async function () {
-        const wallet = lib.wallet();
+        const wallet = tydids();
         const randomMessage = {
             text:"Hello "+new Date().getTime(),
             number:Math.random() 
@@ -13,8 +14,8 @@ describe('Single Instance sign and verify', function () {
         assert.equal(verify,wallet.address);
     });
     it('Signing and verifying with two random wallets', async function () {
-        const wallet1 = lib.wallet();
-        const wallet2 = lib.wallet();
+        const wallet1 = tydids();
+        const wallet2 = tydids();
 
         const randomMessage = {
             text:"Hello "+new Date().getTime(),
@@ -26,8 +27,8 @@ describe('Single Instance sign and verify', function () {
         assert.notEqual(verify,wallet2.address);
     });
     it('Signing and verifying with modified message', async function () {
-        const wallet1 = lib.wallet();
-        const wallet2 = lib.wallet();
+        const wallet1 = tydids();
+        const wallet2 = tydids();
 
         const randomMessage = {
             text:"Hello "+new Date().getTime(),
