@@ -1,6 +1,6 @@
 {
   "name": "tydids",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "TyDIDs - Identity an Certificate framework",
   "main": "lib.mjs",
   "scripts": {
@@ -8,7 +8,6 @@
     "build": "webpack --config webpack.config.js --mode production",
     "dev": "webpack-dev-server --open --config webpack.config.js --mode development"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/energychain/tydids.git"
