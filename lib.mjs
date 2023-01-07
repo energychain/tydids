@@ -410,6 +410,24 @@ const ABIS = {
             "inputs": [
                 {
                     "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "tokenIds",
+                    "type": "uint256[]"
+                }
+            ],
+            "name": "transferFromBulk",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
                     "name": "newOwner",
                     "type": "address"
                 }
@@ -419,7 +437,7 @@ const ABIS = {
             "stateMutability": "nonpayable",
             "type": "function"
         }
-    ],
+    ]
     "GHG20":[
         {
             "inputs": [],
@@ -967,6 +985,26 @@ const ABIS = {
             "stateMutability": "view",
             "type": "function"
         }
+    ],
+    "NFTBULK":[
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256[]",
+                    "name": "tokenIds",
+                    "type": "uint256[]"
+                }
+            ],
+            "name": "transferFromBulk",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
     ]
 }
 
@@ -1026,7 +1064,7 @@ export default function(privateKey , provider) {
     wallet.tydids.contracts.GHGTOKEN = new ethers.Contract('0x36AbF05ac533D9Bb2024A2fb00c9e3F52e4F6a50', wallet.tydids.deployment.ABIS.GHGTOKEN, wallet);
     wallet.tydids.contracts.GHGSAVINGS = new ethers.Contract('0xc475EcB54601C676Ad008A7857A385a52c445244', wallet.tydids.deployment.ABIS.GHG20, wallet);
     wallet.tydids.contracts.GHGEMISSIONS = new ethers.Contract('0xd37B668Ad0417EcD22472ca555a431e84afB40BB', wallet.tydids.deployment.ABIS.GHG20, wallet);
-    wallet.tydids.contracts.GHGCERTIFICATES = new ethers.Contract('0xd00c7C615373443550CF3bc25b0Ea7505dB21841', wallet.tydids.deployment.ABIS.GHG721, wallet);
+    wallet.tydids.contracts.GHGCERTIFICATES = new ethers.Contract('0xC61a197c5b5478091AaDe64382c3Bd3502C81554', wallet.tydids.deployment.ABIS.GHG721, wallet);
  
     return wallet;
 }
