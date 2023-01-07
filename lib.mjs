@@ -437,7 +437,7 @@ const ABIS = {
             "stateMutability": "nonpayable",
             "type": "function"
         }
-    ]
+    ],
     "GHG20":[
         {
             "inputs": [],
