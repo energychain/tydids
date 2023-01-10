@@ -7,6 +7,11 @@ const ABIS = {
                     "internalType": "contract GHGToken",
                     "name": "_ghgToken",
                     "type": "address"
+                },
+                {
+                    "internalType": "contract GHGERC20",
+                    "name": "_compensationToken",
+                    "type": "address"
                 }
             ],
             "stateMutability": "nonpayable",
@@ -135,6 +140,32 @@ const ABIS = {
             "type": "function"
         },
         {
+            "inputs": [],
+            "name": "compensation",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "creationTime",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
             "inputs": [
                 {
                     "internalType": "address",
@@ -180,6 +211,19 @@ const ABIS = {
             "type": "function"
         },
         {
+            "inputs": [],
+            "name": "ghgCompensation",
+            "outputs": [
+                {
+                    "internalType": "contract GHGERC20",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
             "inputs": [
                 {
                     "internalType": "string",
@@ -207,6 +251,19 @@ const ABIS = {
                 }
             ],
             "name": "idToNft",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "lastTime",
             "outputs": [
                 {
                     "internalType": "uint256",
