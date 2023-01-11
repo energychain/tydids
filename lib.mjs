@@ -22,6 +22,43 @@ const ABIS = {
             "inputs": [
                 {
                     "indexed": true,
+                    "internalType": "uint256",
+                    "name": "_blockId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "_time",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "_totalEmissions",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "_totalSavings",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "_totalSurplus",
+                    "type": "uint256"
+                }
+            ],
+            "name": "AddedNFT",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
                     "internalType": "address",
                     "name": "previousOwner",
                     "type": "address"
@@ -34,6 +71,43 @@ const ABIS = {
                 }
             ],
             "name": "OwnershipTransferred",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "_blockId",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "_time",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "_totalEmissions",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "_totalSavings",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "_totalSurplus",
+                    "type": "uint256"
+                }
+            ],
+            "name": "TransferedNFT",
             "type": "event"
         },
         {
@@ -316,6 +390,19 @@ const ABIS = {
         {
             "inputs": [],
             "name": "savings",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "surplus",
             "outputs": [
                 {
                     "internalType": "uint256",
@@ -1228,6 +1315,31 @@ const ABIS = {
                 {
                     "indexed": true,
                     "internalType": "address",
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "time",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "ssi",
+                    "type": "address"
+                }
+            ],
+            "name": "Mint",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
                     "name": "previousOwner",
                     "type": "address"
                 },
@@ -1274,6 +1386,11 @@ const ABIS = {
                     "internalType": "uint256",
                     "name": "savings",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "surplus",
+                    "type": "uint256"
                 }
             ],
             "name": "safeMint",
@@ -1316,6 +1433,19 @@ const ABIS = {
                 }
             ],
             "name": "setGhgSavings",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "contract GHGERC20",
+                    "name": "_ghgSurplus",
+                    "type": "address"
+                }
+            ],
+            "name": "setGhgSurplus",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
@@ -1374,6 +1504,19 @@ const ABIS = {
         },
         {
             "inputs": [],
+            "name": "ghgSurplus",
+            "outputs": [
+                {
+                    "internalType": "contract GHGERC20",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
             "name": "owner",
             "outputs": [
                 {
@@ -1383,26 +1526,6 @@ const ABIS = {
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
-        }
-    ],
-    "NFTBULK":[
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "to",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256[]",
-                    "name": "tokenIds",
-                    "type": "uint256[]"
-                }
-            ],
-            "name": "transferFromBulk",
-            "outputs": [],
-            "stateMutability": "nonpayable",
             "type": "function"
         }
     ]
@@ -1461,10 +1584,11 @@ export default function(privateKey , provider) {
 
     wallet.tydids.deployment = {"ABIS":ABIS};
     wallet.tydids.contracts = {};
-    wallet.tydids.contracts.GHGTOKEN = new ethers.Contract('0x36AbF05ac533D9Bb2024A2fb00c9e3F52e4F6a50', wallet.tydids.deployment.ABIS.GHGTOKEN, wallet);
-    wallet.tydids.contracts.GHGSAVINGS = new ethers.Contract('0xc475EcB54601C676Ad008A7857A385a52c445244', wallet.tydids.deployment.ABIS.GHG20, wallet);
-    wallet.tydids.contracts.GHGEMISSIONS = new ethers.Contract('0xd37B668Ad0417EcD22472ca555a431e84afB40BB', wallet.tydids.deployment.ABIS.GHG20, wallet);
-    wallet.tydids.contracts.GHGCERTIFICATES = new ethers.Contract('0x65297AFaf11eeAd5258A46e969c2341708e9CC59', wallet.tydids.deployment.ABIS.GHG721, wallet);
+    wallet.tydids.contracts.GHGTOKEN = new ethers.Contract('0x5dEd359ef9279DC18398973B885401951315831e', wallet.tydids.deployment.ABIS.GHGTOKEN, wallet);
+    wallet.tydids.contracts.GHGSAVINGS = new ethers.Contract('0xd17966949655Dbb4A216B7e8e09CDC7358F09abf', wallet.tydids.deployment.ABIS.GHG20, wallet);
+    wallet.tydids.contracts.GHGEMISSIONS = new ethers.Contract('0xa2D1a2Df3b13749238B3546C42a92CeF12223439', wallet.tydids.deployment.ABIS.GHG20, wallet);
+    wallet.tydids.contracts.GHGSURPLUS = new ethers.Contract('0x87FB78C89C12d41eF8F17978043a79F082e2Cd75', wallet.tydids.deployment.ABIS.GHG20, wallet);
+    wallet.tydids.contracts.GHGCERTIFICATES = new ethers.Contract('0x1081548b2485F8436B0fDbDddcAaFB0C482072ff', wallet.tydids.deployment.ABIS.GHG721, wallet);
  
     return wallet;
 }
