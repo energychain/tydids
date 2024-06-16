@@ -1541,7 +1541,7 @@ export default function(privateKey , provider) {
     } else {
 
         if((typeof provider == 'undefined')||(provider == null)) {
-            provider = new ethers.providers.JsonRpcProvider("https://rpc.tydids.com/");
+            provider = new ethers.providers.JsonRpcProvider("https://rpc.stromkonto.net/");
         }
         
         
